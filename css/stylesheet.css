@@ -2,7 +2,6 @@ body{
     font-family: "Berlin Sans FB", Verdana, sans-serif;
 }
 header{
-    margin-top:3em;
     height: 5em;
     text-align: center;
     padding-top: 3em;
@@ -15,15 +14,7 @@ footer{
 h1 {
     font-size: 2em;
 }
-ul{
-    position:   fixed;
-    top:    0;
-    width:  100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
+
 li {
     float:  left;
 }
@@ -50,14 +41,53 @@ li:hover{
     border: 1px dashed green;
 }
 #center-container{
-    border: 1px solid blue;
+
     height: 100%;
     margin-left:    12em;
     margin-right:   17em;
 }
 main{
+    margin-top: 3em;
     margin-left:    2em;
     margin-right:   2em;
     height: 1000px;
     border: 1px solid purple;
+}
+.top-navbar{
+    position:   absolute;
+    top:    8em;
+    width:  100%;
+    margin: 0;
+    padding:    0;
+    overflow:   hidden;
+    background-color:   #333;
+
+}
+.fixed-navbar{
+    position:   fixed;
+    top:    0;
+    width:  100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+article{
+    padding-left:   1em;
+    padding-top:    1em;
+    height: 6em;
+    width:  auto;
+    margin-bottom:  0.5em;
+    background-color:   lightslategrey;
+}
+article img{
+    float:  left;
+    width:  5em;
+    height: 5em;
+}
+article p{
+    margin-left:    6em;
+}
+.top-navbar li:last-child{
+    float:  right;
 }

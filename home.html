@@ -9,43 +9,76 @@
     <script src="js/script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>MyDiscussionForum</h1>
-    </header>
-    <nav>
-        <ul id="navbar" class="top-navbar">
-            <li><a href="#">main</a></li>
-            <li><a href="#">profile</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="#">categories</a></li>
-            <li><a href="createaccount.html">login</a></li>
-        </ul>
-    </nav>
-    <main>
-        <div id="left">
-            <p>this is the left sidebar</p>
-        </div>
-        <div id="right">
-            <p>this is the right sidebar</p>
-        </div>
-        <div id="center-container">
-            <article>
-                <img>
-                <p>A post.</p>
-            </article>
-            <article>
-                <img>
-                <p>A post.</p>
-            </article>
-            <article>
-                <img>
-                <p>A post.</p>
-            </article>
-        </div>
+<header>
+    <h1>MyDiscussionForum</h1>
+</header>
+<nav>
+    <ul id="navbar" class="top-navbar">
+        <li><a href="home.html">main</a></li>
+        <li><a href="#">profile</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">categories</a></li>
+        <li><a href="#" id="loginBtn">login</a></li>
+    </ul>
+</nav>
+<main>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">x</span>
+            <form id="signup" action="#" method="get">
+                <fieldset>
+                    <legend>sign up</legend>
+                    <br>
+                    <input placeholder="choose a username" type="text" id="username">
+                    <br><br>
+                    <input placeholder="choose a password" type="password" id="pass">
+                    <br>
+                    <input placeholder="re-enter password" type="password" id="pass2">
+                    <br><br>
+                    <input placeholder="enter email" type="email" id="email">
+                    <br>
+                    <input placeholder="re-enter email" type="email" id="email2">
+                    <br><br>
+                    <input type="submit" value="create account">
+                </fieldset>
+            </form>
 
-    </main>
-    <footer>
-        <p>Copyright 2017</p>
-    </footer>
+            <form id="login">
+                <fieldset>
+                    <legend>log in</legend><br>
+                    <input type="text" placeholder="username" id="userLogin">
+                    <br><br>
+                    <input placeholder="password" type="password" id="passLogin">
+                    <br><br>
+                    <input type="submit" value="login">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div id="left">
+        <p>this is the left sidebar</p>
+    </div>
+    <div id="right">
+        <p>this is the right sidebar</p>
+    </div>
+    <div id="center-container">
+        <article>
+            <img>
+            <p>A post.</p>
+        </article>
+        <article>
+            <img>
+            <p>A post.</p>
+        </article>
+        <article>
+            <img>
+            <p>A post.</p>
+        </article>
+    </div>
+
+</main>
+<footer>
+    <p>Copyright 2017</p>
+</footer>
 </body>
 </html>

@@ -12,21 +12,21 @@ footer{
     text-align: center;
 }
 h1 {
-    font-size: 2em;
+    font-size:  2em;
 }
 
 li {
     float:  left;
 }
 li a{
-    display: block;
-    color: white;
+    display:    block;
+    color:  white;
     text-align: center;
-    padding: 1em 2em 1em 2em;
-    text-decoration: none;
+    padding:    1em 2em 1em 2em;
+    text-decoration:    none;
 }
 li:hover{
-    background-color: black;
+    background-color:   black;
 }
 #left{
     height: 100%;
@@ -41,7 +41,7 @@ li:hover{
     border: 1px dashed green;
 }
 #center-container{
-
+    padding-top: 1em;
     height: 100%;
     margin-left:    12em;
     margin-right:   17em;
@@ -90,4 +90,66 @@ article p{
 }
 .top-navbar li:last-child{
     float:  right;
+}
+
+#signup{
+    float:  left;
+
+}
+legend{
+    font-size:  2em;
+}
+#login{
+    height: 100%;
+    margin-left:    13em;
+    border-left:    1px solid lightgrey;
+    padding-left:   2em;
+}
+form input{
+    border-radius: 0.25em;
+    padding: 0.5em;
+}
+
+
+/* MODAL LOGIN BOX */
+.modal {
+    display:    none; /* Hidden by default */
+    position:   fixed; /* Stay in place */
+    z-index:    1; /* Sit on top */
+    left:   0;
+    top:    0;
+
+    width:  100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow:   auto; /* Enable scroll if needed */
+    background-color:   rgb(0,0,0); /* Fallback color */
+    background-color:   rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color:   #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    border-radius:  3px;
+    padding:    2em;
+    width:  29em; /* Could be more or less, depending on screen size */
+    height: 18em;
+}
+
+/* The Close Button */
+.close {
+    color:  #aaa;
+    float:  right;
+    font-weight:    bold;
+    text-align: center;
+    padding: 0 4px 2px 5px;
+    border: 2px solid lightgrey;
+}
+
+.close:hover,
+.close:focus {
+    color:  black;
+    text-decoration:    none;
+    cursor: pointer;
 }

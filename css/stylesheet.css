@@ -1,0 +1,63 @@
+body{
+    font-family: "Berlin Sans FB", Verdana, sans-serif;
+}
+header{
+    margin-top:3em;
+    height: 5em;
+    text-align: center;
+    padding-top: 3em;
+    background-color: lightgrey;
+}
+footer{
+    padding:    3em;
+    text-align: center;
+}
+h1 {
+    font-size: 2em;
+}
+ul{
+    position:   fixed;
+    top:    0;
+    width:  100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float:  left;
+}
+li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1em 2em 1em 2em;
+    text-decoration: none;
+}
+li:hover{
+    background-color: black;
+}
+#left{
+    height: 100%;
+    width:  10em;
+    float:  left;
+    border: 1px dashed red;
+}
+#right{
+    float:  right;
+    width:  15em;
+    height: 100%;
+    border: 1px dashed green;
+}
+#center-container{
+    border: 1px solid blue;
+    height: 100%;
+    margin-left:    12em;
+    margin-right:   17em;
+}
+main{
+    margin-left:    2em;
+    margin-right:   2em;
+    height: 1000px;
+    border: 1px solid purple;
+}

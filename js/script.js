@@ -15,8 +15,11 @@ $(window).bind('scroll', function () {
 });
 
 
-$(document).ready(function(){
-
+$(document).ready(function () {
+    var forms = document.getElementsByTagName("form");
+    for (var i = 0; i < forms.length; i++) {
+        forms[i].addEventListener('submit', formValidation);
+    }
     document.getElementById('icon').addEventListener('click', navClick);
     /*
      Modal Login Box
@@ -58,5 +61,58 @@ function navClick() {
         x.className = "top-navbar";
         main.style.marginTop = "3em";
 
+    }
+}
+function formValidation(e) {
+    var classes, bValid;
+    var inputs = e.target.children;
+    for (var i = 0; i < inputs.length; i++) {
+        for (var i = 0; i < inputs.length; i++) {
+            // Allow for multiple values being assigned to the class attribute
+            classes = inputs[i].className.split(' ');
+            for (var classCount = 0; classCount < classes.length; classCount++) {
+                switch (classes[classCount]) {
+                    case 'string':
+                        bValid = isString(inputs[i].value.replace(/^\s*|\s*$/g, ''));
+                        break;
+                    case 'password' :
+                        bValid = isPassword(inputs[i].value);
+                        break;
+                    case 'email' :
+                        bValid = isEmail(inputs[i].value);
+                        break;
+                    default:
+                        bValid = true;
+                }
+
+                if (bValid == false) {
+                    e.preventDefault();
+                    // If this field is invalid, leave the testing early,
+                    // and alert the user to this error
+                    alert('Please review the value you provided for ' + inputs[i].name);
+                    inputs[i].select();
+                    inputs[i].focus();
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    function isString(strValue) {
+        return (typeof strValue == 'string' && strValue != '' && isNaN(strValue));
+    }
+
+    function isPassword(strValue) {
+        // matches at least one lowercase, one number, 4-10 characters
+        var regex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,10})/;
+        return (regex.text(strValue) && strValue != '');
+    }
+
+    function isEmail(strValue) {
+        // validates email
+        var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        return (strValue != '' && regex.test(strValue));
     }
 }

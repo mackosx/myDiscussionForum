@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MyDiscussionForum</title>
+    <title>Fashion for the Modern Man</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -35,33 +35,33 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">x</span>
-            <form id="signup" action="#" method="get">
+            <form id="signup" action="http://www.randyconnolly.com/tests/process.php?" method="get">
                 <fieldset>
                     <legend>sign up</legend>
                     <br>
-                    <input placeholder="choose a username" type="text" id="username">
+                    <input placeholder="choose a username" type="text" name="username">
                     <br><br>
-                    <input placeholder="choose a password" type="password" id="pass">
+                    <input placeholder="choose a password" class="password" type="password" name="pass">
                     <br>
-                    <input placeholder="re-enter password" type="password" id="pass2">
+                    <input placeholder="re-enter password" type="password" class="password" name="pass2">
                     <br><br>
-                    <input placeholder="enter email" type="email" id="email">
+                    <input placeholder="enter email" type="email" class="email" name="email">
                     <br>
-                    <input placeholder="re-enter email" type="email" id="email2">
+                    <input placeholder="re-enter email" type="email" class="email" name="email2">
                     <br><br>
-                    <input class="buttons" type="submit" value="create account">
+                    <input class="buttons" type="submit" form="signup" value="create account">
                 </fieldset>
             </form>
 
-            <form id="login">
+            <form id="login" method="get" action="http://www.randyconnolly.com/tests/process.php?">
                 <fieldset>
                     <legend>log in</legend>
                     <br>
-                    <input type="text" placeholder="username" id="userLogin">
+                    <input name="username" type="text" placeholder="username">
                     <br><br>
-                    <input placeholder="password" type="password" id="passLogin">
+                    <input placeholder="password" type="password" name="password" class="password">
                     <br><br>
-                    <input class="buttons" type="submit" value="login">
+                    <input class="buttons" form="login" type="submit" value="login">
                 </fieldset>
             </form>
         </div>

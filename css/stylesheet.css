@@ -47,6 +47,7 @@ h1 {
     width:  auto;
 }
 #center-container{
+    min-width: 15em;
     height: 100%;
     margin-left:    12em;
     margin-right:   17em;
@@ -157,7 +158,13 @@ form input{
 }
 .buttons{
     background: #874C62;
+    border: #6d3d4f;
     color: white;
+}
+.buttons:hover{
+    border: #6d3d4f;
+    background-color: #6d3d4f;
+    cursor: pointer;
 }
 
 
@@ -225,8 +232,15 @@ Show the link that contains should open and close the nav #icon */
         float: right;
         display: block;
     }
-
-
+    #right{
+        display:none;
+    }
+    #center-container{
+        margin: 0;
+    }
+    #left{
+        display: none;
+    }
     .top-navbar.responsive {
         top:    0;
         position:   relative;

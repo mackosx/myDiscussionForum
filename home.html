@@ -7,18 +7,27 @@
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="js/script.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <header>
-    <h1>MyDiscussionForum</h1>
+    <h1>myFashionForum</h1>
 </header>
 <nav>
     <ul id="navbar" class="top-navbar">
         <li><a href="home.html">main</a></li>
         <li><a href="#">profile</a></li>
         <li><a href="#">about</a></li>
-        <li><a href="#">categories</a></li>
-        <li><a href="javascript:void(0);" class="icon">&#9776;</a></li>
+        <li class="dropdown">
+            <a href="#">categories</a>
+            <div class="dropdown-content">
+                <a href="#">What to wear</a>
+                <a href="#">Trending</a>
+                <a href="#">Inspiration</a>
+            </div>
+        </li>
+        <li id="icon"><a href="javascript:void(0);">&#9776;</a></li>
         <li><a href="#" id="loginBtn">login</a></li>
     </ul>
 </nav>
@@ -46,7 +55,8 @@
 
             <form id="login">
                 <fieldset>
-                    <legend>log in</legend><br>
+                    <legend>log in</legend>
+                    <br>
                     <input type="text" placeholder="username" id="userLogin">
                     <br><br>
                     <input placeholder="password" type="password" id="passLogin">

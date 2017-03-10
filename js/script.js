@@ -2,11 +2,12 @@
  * Created by macke on 2017-03-08.
  */
 var headerHeight = 130;
-
+// fixed scroll bar once user scroll past header
 $(window).bind('scroll', function () {
     if ($(window).scrollTop() > headerHeight) {
         $('#navbar').removeClass('top-navbar');
         $('#navbar').addClass('fixed-navbar');
+
     } else {
         $('#navbar').removeClass('fixed-navbar');
         $('#navbar').addClass('top-navbar');
@@ -15,6 +16,8 @@ $(window).bind('scroll', function () {
 
 
 $(document).ready(function(){
+
+    document.getElementsByClassName('icon')[0].addEventListener('click', navClick);
     /*
      Modal Login Box
      */
@@ -44,3 +47,11 @@ $(document).ready(function(){
         }
     }
 });
+function navClick() {
+    var x = document.getElementById("navbar");
+    if (x.className === "top-navbar") {
+        x.className += " responsive";
+    } else {
+        x.className = "top-navbar";
+    }
+}

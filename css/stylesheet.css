@@ -138,6 +138,10 @@ textarea{
     margin-left:   5%;
     padding-top:    2em;
 }
+/*Profile styling*/
+#profile-container{
+    padding-top:    1em;
+}
 /*styling for comments on post*/
 .comment{
     min-width: 5em;

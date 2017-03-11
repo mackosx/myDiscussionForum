@@ -28,14 +28,16 @@ $(document).ready(function () {
     var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
-    var btn = document.getElementById("loginBtn");
+    var btns = document.getElementsByClassName("loginBtn");
 
 // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
+    for(var i = 0; i < btns.length; i++){
+        btns[i].onclick = function () {
+            modal.style.display = "block";
+        }
     }
 
 // When the user clicks on <span> (x), close the modal
@@ -51,62 +53,52 @@ $(document).ready(function () {
     }
 });
 function navClick() {
-    var x = document.getElementById("navbar");
-    var main = document.getElementsByTagName("main")[0];
-
-    if (x.className === "top-navbar" || x.className === "fixed-navbar") {
-        x.className += " responsive";
-        main.style.marginTop = "0";
-    } else {
-        x.className = "top-navbar";
-        main.style.marginTop = "3em";
-
-    }
+    $('#navbar').toggleClass('responsive');
 }
 function formValidation(e) {
     var classes, bValid;
-    var inputs = e.target.children;
+    var inputs = e.target.children[0].children;
     for (var i = 0; i < inputs.length; i++) {
-        for (var i = 0; i < inputs.length; i++) {
-            // Allow for multiple values being assigned to the class attribute
-            classes = inputs[i].className.split(' ');
-            for (var classCount = 0; classCount < classes.length; classCount++) {
-                switch (classes[classCount]) {
-                    case 'string':
-                        bValid = isString(inputs[i].value.replace(/^\s*|\s*$/g, ''));
-                        break;
-                    case 'password' :
-                        bValid = isPassword(inputs[i].value);
-                        break;
-                    case 'email' :
-                        bValid = isEmail(inputs[i].value);
-                        break;
-                    default:
-                        bValid = true;
-                }
+        // Allow for multiple values being assigned to the class attribute
+        classes = inputs[i].className.split(' ');
 
-                if (bValid == false) {
-                    e.preventDefault();
-                    // If this field is invalid, leave the testing early,
-                    // and alert the user to this error
-                    alert('Please review the value you provided for ' + inputs[i].name);
-                    inputs[i].select();
-                    inputs[i].focus();
-                    return false;
-                }
+        for (var classCount = 0; classCount < classes.length; classCount++) {
+
+            switch (classes[classCount]) {
+                case 'username' :
+                    bValid = isUsername(inputs[i].value);
+                    break;
+                case 'password' :
+                    bValid = isPassword(inputs[i].value);
+                    break;
+                case 'email' :
+                    bValid = isEmail(inputs[i].value);
+                    break;
+                default:
+                    bValid = true;
+            }
+            console.log(i + "VALUE: "+inputs[i].value + " " + bValid);
+            if (bValid == false) {
+                e.preventDefault();
+                // If this field is invalid, leave the testing early,
+                // and alert the user to this error
+                alert('Please review the value you provided for ' + inputs[i].name);
+                inputs[i].select();
+                inputs[i].focus();
+                return false;
             }
         }
-        return true;
     }
 
-    function isString(strValue) {
-        return (typeof strValue == 'string' && strValue != '' && isNaN(strValue));
+    function isUsername(strValue) {
+        var regex = /^[a-z0-9_-]{3,15}$/;
+        return (strValue != '' && regex.test(strValue));
     }
 
     function isPassword(strValue) {
         // matches at least one lowercase, one number, 4-10 characters
         var regex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,10})/;
-        return (regex.text(strValue) && strValue != '');
+        return (regex.test(strValue) && strValue != '');
     }
 
     function isEmail(strValue) {

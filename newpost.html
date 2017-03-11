@@ -17,7 +17,7 @@
 <nav>
     <ul id="navbar" class="top-navbar">
         <li><a href="home.html">main</a></li>
-        <li><a href="#" class="loginBtn">profile</a></li>
+        <li><a href="#">profile</a></li>
         <li><a href="#">about</a></li>
         <li class="dropdown">
             <a href="#">categories</a>
@@ -77,24 +77,23 @@
             <button class="big-buttons loginBtn">Your posts</button>
         </div>
         <p>this is the right sidebar</p>
-        <a  href="newpost.html"><button class="big-buttons">New Post</button></a>
     </div>
     <div id="center-container">
-        <h1>latest posts</h1>
-        <article>
-            <img src="images/placeholder.png">
-            <a href="post.html"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.</p></a>
-        </article>
-        <article>
-            <img src="images/placeholder.png">
-            <a href="post.html"><p>A post.</p></a>
-        </article>
-        <article>
-            <img src="images/placeholder.png">
-            <a href="post.html"><p>A post.</p></a>
-        </article>
+        <div id="new-post-container">
+        <form method="post" action="#">
+            <fieldset>
+                <legend>make a post</legend><br>
+                <label>title:</label><br>
+                <input type="text"><br><br>
+                <label>link [optional]:</label><br>
+                <input type="text"><br><br>
+                <label>content:</label><br>
+                <textarea placeholder="max 500 words">
+                </textarea>
+            </fieldset>
+        </form>
+        </div>
+
     </div>
 
 </main>

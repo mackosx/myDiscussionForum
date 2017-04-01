@@ -77,7 +77,6 @@ function formValidation(e) {
                 default:
                     bValid = true;
             }
-            console.log(i + "VALUE: "+inputs[i].value + " " + bValid);
             if (bValid == false) {
                 e.preventDefault();
                 // If this field is invalid, leave the testing early,

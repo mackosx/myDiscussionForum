@@ -2,7 +2,7 @@
 require 'navbar.php';
 ?>
     <main>
-        <?php require 'loginBox.php';?>
+        <?php require 'loginBox.php'; ?>
         <div id="left">
             <p>this is the left sidebar</p>
         </div>
@@ -14,8 +14,10 @@ require 'navbar.php';
                 <button class="big-buttons loginBtn">Your posts</button>
             </div>
             <p>this is the right sidebar</p>
-            <a href="newpost.html">
-                <button class="big-buttons">New Post</button>
+            <a href="newpost.php">
+                <?php if ($loggedIn) { ?>
+                    <button class="big-buttons">New Post</button>
+                <?php } ?>
             </a>
         </div>
         <div id="center-container">
@@ -30,7 +32,7 @@ require 'navbar.php';
                 //good connection
                 $stmt = $conn->prepare("SELECT pid, title, link, score FROM Posts  ORDER BY pid DESC LIMIT 10;");
                 $stmt->execute();
-                $stmt->bind_result($pid,$title, $link, $score);
+                $stmt->bind_result($pid, $title, $link, $score);
                 $posts = [];
                 while ($stmt->fetch()) {
                     array_push($posts, [
@@ -42,13 +44,13 @@ require 'navbar.php';
                 }
                 foreach ($posts as &$post) {
                     echo "<article><img src=\"images/placeholder.png\">
-                            <a href=\"http://".
-                        $post['link'].
-                        "\"><p>".
+                            <a href=\"http://" .
+                        $post['link'] .
+                        "\"><p>" .
                         $post['title'] .
-                        "</p></a>".
+                        "</p></a>" .
                         $post['score'] .
-                        '<p><a href="post.php?pid='. $post['pid'] .
+                        '<p><a href="post.php?pid=' . $post['pid'] .
                         '" >Comments</a></p></article>';
                 }
             }

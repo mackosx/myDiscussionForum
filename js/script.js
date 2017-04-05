@@ -95,7 +95,7 @@ function formValidation(e) {
     }
 
     function isPassword(strValue) {
-        // matches at least one lowercase, one number, 4-10 characters
+        // matches at least one uppercase, one number, 4-10 characters
         var regex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,10})/;
         return (regex.test(strValue) && strValue != '');
     }

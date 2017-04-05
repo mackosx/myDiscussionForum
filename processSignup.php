@@ -28,8 +28,9 @@ if ($set) {
 
 
         if ($stmt->fetch()) {
-            echo "<p>User already exists with this name and/or email.</p>";
-            echo '<a href=\"' . $_SERVER['HTTP_REFERER'] . '\">Return to user entry</a>';
+            $_SESSION['signupFailed'] = 'true';
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+
         } else {
 
                 // insert user
@@ -40,7 +41,7 @@ if ($set) {
                 $stmt->execute();
 
 
-            header("Location: home.php");
+            header("Location: " . $_SERVER['HTTP_REFERER']);
 
         }
 

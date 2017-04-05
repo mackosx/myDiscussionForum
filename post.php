@@ -14,7 +14,7 @@ require 'navbar.php';
             <button class="big-buttons loginBtn">Your posts</button>
         </div>
         <p>this is the right sidebar</p>
-        <a href="newpost.html">
+        <a href="newpost.php">
             <button class="big-buttons">New Post</button>
         </a>
     </div>
@@ -73,15 +73,16 @@ require 'navbar.php';
                     ]);
                 }
                 foreach ($comments as $comment)
-                    echo "<div><p>" . $comment['text'] . "</p></div>";
+                    echo "<div class='comment'>" .
+                        "<h3>" . $comment['username'] . "</h3><br>".
+                           "<p>" . $comment['text'] . "</p></div>";
                 $stmt->close();
             }
         }
         ?>
         <div class="comment">
             <?php if ($loggedIn){
-                $_POST['pid'] = $_GET['pid'];
-                $_POST['uid'] = $_SESSION['uid'];
+                $_SESSION['pid'] = $post['pid'];
                 ?>
             <form action="leaveComment.php" method="post">
             <fieldset>Leave a comment</fieldset>

@@ -5,6 +5,9 @@ include "connection.php";
 if ($_SESSION['failedLogin'] == 'true') {
     echo "<script>alert('Login failed');</script>";
     $_SESSION['failedLogin'] = 'false';
+}else if($_SESSION['signupFailed'] == 'true'){
+    echo "<script>alert('Account already exists.');</script>";
+    $_SESSION['failedLogin'] = 'false';
 }
 ?>
 <!DOCTYPE html>
@@ -40,12 +43,14 @@ if ($_SESSION['failedLogin'] == 'true') {
         <?php
         // displays username if logged in, otherwise its a login button
         if ($loggedIn) {
-            echo ">" . $_SESSION['username'] . "</a>
-                    <div class=\"dropdown-content\">
-                    <a href=\"profile.php\">profile</a>
-                    <a href=\"logout.php\">log out</a>
+            ?>
+            <li class="dropdown"><a><?=$_SESSION['username']?></a>
+                <div class="dropdown-content">
+                    <a href="profile.php?uid=<?=$_SESSION['uid']?>">profile</a>
+                    <a href="logout.php">log out</a>
                 </div>
-                    </li>";
+            </li>
+        <?php
         } else {
             echo "<li><a href=\"#\" class=\"loginBtn\">login/signup</a></li>";
         }

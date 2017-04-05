@@ -13,7 +13,7 @@ header h1{
     color:  #A7D2CB;
     margin-right: 2em;
     font-weight: bolder;
-    font-family: "Scriptina";
+    font-family: "Scriptina", Verdana, sans-serif;
 }
 header{
     top: -5em;
@@ -142,6 +142,20 @@ textarea{
 #profile-container{
     padding-top:    1em;
 }
+#profile-container img{
+    height: 150px;
+    width: 150px;
+    float: left;
+}
+#profile-container p, #profile-container h2{
+    float: left;
+
+}
+#profile-container form{
+    margin-top: 12em;
+    float: none;
+    display: block;
+}
 /*styling for comments on post*/
 .comment{
     min-width: 5em;
@@ -150,6 +164,9 @@ textarea{
     background-color: #b2e1d9;
     margin-top: 0.5em;
     padding: 1em;
+}
+.comment h3{
+    color: #874C62;
 }
 .fixed-navbar li:last-child,
 .top-navbar li:last-child{

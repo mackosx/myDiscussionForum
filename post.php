@@ -1,6 +1,7 @@
 <?php
 require 'navbar.php';
 ?>
+
 <main>
     <?php require 'loginBox.php'; ?>
     <div id="left">
@@ -59,36 +60,22 @@ require 'navbar.php';
 
                 $stmt->close();
 
-                //now fetch comments
-                $stmt = $conn->prepare("SELECT c.text, u.username FROM Comments c, Users u WHERE c.uid = u.uid AND c.pid = ?;");
-                $stmt->bind_param("i", $post['pid']);
-                $stmt->execute();
-                $stmt->bind_result($text, $username);
-                $comments = [];
-                while ($stmt->fetch()) {
-                    array_push($comments, [
-                        'text' => $text,
-                        'username' => $username,
 
-                    ]);
-                }
-                foreach ($comments as $comment)
-                    echo "<div class='comment'>" .
-                        "<h3>" . $comment['username'] . "</h3><br>".
-                           "<p>" . $comment['text'] . "</p></div>";
-                $stmt->close();
             }
         }
         ?>
+        <div class="comments">
+
+        </div>
         <div class="comment">
-            <?php if ($loggedIn){
+            <?php if ($loggedIn) {
                 $_SESSION['pid'] = $post['pid'];
                 ?>
-            <form action="leaveComment.php" method="post">
-            <fieldset>Leave a comment</fieldset>
-            <textarea name="text"></textarea>
-            <input type="submit">
-            </form>
+                <form id="commentForm" method="post">
+                    <fieldset>Leave a comment</fieldset>
+                    <textarea name="text"></textarea>
+                    <input type="submit" value="leave comment">
+                </form>
             <?php } else {
                 echo "<p>You must bet logged in to comment.</p>";
             }
@@ -101,5 +88,19 @@ require 'navbar.php';
 <footer>
     <p>Copyright 2017</p>
 </footer>
+<script>
+    (function worker() {
+        $.ajax({
+            url: 'updateComments.php?pid=<?=$post['pid'] ?>',
+            success: function (data) {
+                $('.comments').html(data);
+            },
+            complete: function () {
+                // Schedule the next request when the current one's complete
+                setTimeout(worker, 5000);
+            }
+        });
+    })();
+</script>
 </body>
 </html>

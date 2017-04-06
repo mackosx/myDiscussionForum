@@ -21,8 +21,9 @@ if (isset($_POST['text'])) {
     $text = $_POST['text'];
 }
 
-$stmt = $conn->prepare("INSERT INTO Posts(title, text, link, uid) VALUES(?, ?, ?, ?);");
-$stmt->bind_param("sssi", $title, $text, $link, $_SESSION['uid']);
+$score = 1;
+$stmt = $conn->prepare("INSERT INTO Posts(title, text, link, uid, score) VALUES(?, ?, ?, ?, ?);");
+$stmt->bind_param("sssii", $title, $text, $link, $_SESSION['uid'], $score);
 $stmt->execute();
 $stmt->close();
 

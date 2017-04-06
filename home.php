@@ -42,19 +42,23 @@ require 'navbar.php';
                         'score' => $score
                     ]);
                 }
-                foreach ($posts as &$post) {
-                    echo "<article><img src=\"images/placeholder.png\">
-                            <a href=\"http://" .
-                        $post['link'] .
-                        "\"><p>" .
-                        $post['title'] .
-                        "</p></a>" .
-                        $post['score'] .
-                        '<p><a href="post.php?pid=' . $post['pid'] .
-                        '" >Comments</a></p></article>';
-                }
-            }
-            ?>
+                foreach ($posts as $post) { ?>
+                    <article>
+                        <div id="<?=$post['pid']?>" class="score">
+                            <a id="up" onclick="vote('up', <?=$post['pid']?>)">&#x25B2;</a>
+                            <p><?=$post['score']?></p>
+                            <a id="down" onclick="vote('down', <?=$post['pid']?>)">&#x25BC;</a>
+                        </div>
+                        <img src="images/placeholder.png">
+                        <a href=http://"<?= $post['link'] ?>"><p><?= $post['title'] ?></p></a>
+
+                        <p><a href="post.php?pid=<?= $post['pid'] ?>">Comments</a></p>
+                        <?php if($_SESSION['isAdmin'] == 1){?>
+                        <a style="float:right;" href="deletePost.php?pid=<?= $post['pid'] ?>">Delete Post</a>
+                        <?php } ?>
+                    </article>
+                <?php }
+            } ?>
 
 
         </div>

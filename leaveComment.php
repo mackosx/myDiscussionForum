@@ -16,4 +16,3 @@ if ($error != null) {
     $stmt->execute();
     $stmt->close();
 }
-header('Location: ' . $_SERVER['HTTP_REFERER']);

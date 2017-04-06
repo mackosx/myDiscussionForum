@@ -15,11 +15,36 @@ $(window).bind('scroll', function () {
 });
 
 
+
+function vote(direction, pid){
+    $('#'+pid+'').find("p").load("currentScore.php?direction=" + direction+"&pid=" + pid);
+
+}
 $(document).ready(function () {
+
     var forms = document.getElementsByTagName("form");
     for (var i = 0; i < forms.length; i++) {
+
         forms[i].addEventListener('submit', formValidation);
     }
+    $("#commentForm").submit(function(e) {
+
+        var url = "leaveComment.php"; // the script where you handle the form input.
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#commentForm").serialize(), // serializes the form's elements.
+            success: function(data)
+            {
+                //alert(data); // show response from the php script.
+            }
+        });
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $("#commentForm").find("textarea").val("");
+    });
+
     document.getElementById('icon').addEventListener('click', navClick);
     /*
      Modal Login Box
@@ -34,7 +59,7 @@ $(document).ready(function () {
     var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-    for(var i = 0; i < btns.length; i++){
+    for(i = 0; i < btns.length; i++){
         btns[i].onclick = function () {
             modal.style.display = "block";
         }

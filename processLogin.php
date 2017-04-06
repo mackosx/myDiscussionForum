@@ -14,15 +14,24 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $u = $_POST['username'];
         $p = $_POST['password'];
         // check db for user/pass combo
-        $stmt = $conn->prepare("SELECT username, password, uid FROM Users WHERE username = ?;");
+        $stmt = $conn->prepare("SELECT username, password, uid, isAdmin, isBanned FROM Users WHERE username = ?;");
         $stmt->bind_param("s", $u);
         $stmt->execute();
-        $stmt->bind_result($user, $pass, $uid);
+        $stmt->bind_result($user, $pass, $uid, $isAdmin, $isBanned);
         if ($stmt->fetch()) {
             if ($pass == md5($p)) {
                 // log in
-                $_SESSION['username'] = $user;
-                $_SESSION['uid'] = $uid;
+                $_SESSION['isBanned'] = $isBanned;
+
+                if($isBanned == 1){
+
+                } else {
+                    $_SESSION['username'] = $user;
+                    $_SESSION['uid'] = $uid;
+                    $_SESSION['isAdmin'] = $isAdmin;
+                }
+
+
             } else
             $_SESSION['failedLogin'] = 'true';
         } else {

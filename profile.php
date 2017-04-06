@@ -47,11 +47,11 @@ if(!$loggedIn){
             $stmt->bind_result($type, $image);
 
             ?>
-            <h1><?php echo $user['username']; ?></h1><br>
+            <h1><?=$user['username'] ?></h1><br>
             <?php if($stmt->fetch()){?>
             <img src="data:image/<?=$type?>;base64,<?=base64_encode($image)?>">
             <?php } ?>
-            <h2>Bio</h2>
+            <h2>Bio:</h2><br>
             <p><?=$user['bio'] ?></p>
             <div >
                 <form action="upload.php" method="post" enctype="multipart/form-data">

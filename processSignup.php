@@ -34,7 +34,7 @@ if ($set) {
         } else {
 
                 // insert user
-                $stmt = $conn->prepare("INSERT INTO Users(username, email, password) VALUES(?, ?, ?);");
+                $stmt = $conn->prepare("INSERT INTO Users(username, email, password, isAdmin, isBanned) VALUES(?, ?, ?, 0, 0);");
                 // hash pass...tasty
                 $p = md5($p);
                 $stmt->bind_param("sss", $u, $e, $p);
